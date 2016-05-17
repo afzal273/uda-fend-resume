@@ -11,7 +11,7 @@ var bio = {
         location: 'San Jose, CA',
         blog: 'afzalsyed.com'
     },
-    bioPic: 'images/fry.jpg',
+    biopic: 'images/fry.jpg',
     welcomeMessage: 'Where there is a will there is a way!',
     skills: ['HTML/CSS', 'JavaScript', 'jQuery', 'Python', 'Ruby', 'Java', 'PHP', 'Perl', 'Objective-C', 'Swift'],
     display: function() {
@@ -20,31 +20,15 @@ var bio = {
         $('#header').prepend(HTMLheaderRole.replace('%data%', this.role));
         $('#header').prepend(HTMLheaderName.replace('%data%', this.name));
 
+        $('#topContacts, #footerContacts').append(HTMLmobile.replace('%data%', this.contacts.mobile));
+        $('#topContacts, #footerContacts').append(HTMLemail.replace('%data%', this.contacts.email));
+        $('#topContacts, #footerContacts').append(HTMLgithub.replace('%data%', this.contacts.github));
+        $('#topContacts, #footerContacts').append(HTMLtwitter.replace('%data%', this.contacts.twitter));
+        $('#topContacts, #footerContacts').append(HTMLlocation.replace('%data%', this.contacts.location));
 
-        var formattedMobile = HTMLmobile.replace('%data%', this.contacts.mobile);
-        var formattedbioPic = HTMLbioPic.replace('%data%', this.bioPic);
-        var formattedWelcomeMessage = HTMLWelcomeMsg.replace('%data%', this.welcomeMessage);
-        var formattedEmail = HTMLemail.replace('%data%', this.contacts.email);
-        var formattedTwitter = HTMLtwitter.replace('%data%', this.contacts.twitter);
-        var formattedGithub = HTMLgithub.replace('%data%', this.contacts.github);
-        var formattedLocation = HTMLlocation.replace('%data%', this.contacts.location);
 
-        $('#topContacts').append(formattedMobile);
-        $('#topContacts').append(formattedEmail);
-        $('#topContacts').append(formattedGithub);
-        $('#topContacts').append(formattedTwitter);
-        $('#topContacts').append(formattedLocation);
-
-        $('#footerContacts').append(formattedMobile);
-        $('#footerContacts').append(formattedEmail);
-        $('#footerContacts').append(formattedGithub);
-        $('#footerContacts').append(formattedTwitter);
-        $('#footerContacts').append(formattedLocation);
-        $('#main').append(work.position);
-        $('#main').append(education.name);
-
-        $('#header').append(formattedWelcomeMessage);
-        $('#header').append(formattedbioPic);
+        $('#header').append(HTMLWelcomeMsg.replace('%data%', this.welcomeMessage));
+        $('#header').append(HTMLbioPic.replace('%data%', this.biopic));
 
         if (this.skills) {
             $('#header').append(HTMLskillsStart);
@@ -117,17 +101,17 @@ var education = {
     onlineCourses: [{
         title: 'Intro to HTML/CSS',
         school: 'Udacity',
-        dates: '2015',
+        date: '2015',
         url: 'www.udacity.com'
     }, {
         title: 'Intro to JavaScript',
         school: 'Udacity',
-        dates: '2016',
+        date: '2016',
         url: 'www.udacity.com'
     }, {
         title: 'Intro to Jquery',
         school: 'Udacity',
-        dates: '2016',
+        date: '2016',
         url: 'www.udacity.com'
     }],
     display: function() {
@@ -145,7 +129,7 @@ var education = {
             $('.education-entry:last-child').append(HTMLonlineClasses);
             $.each(this.onlineCourses, function(_, course) {
                 $('.education-entry:last-child').append(HTMLonlineTitle.replace('%data%', course.title) + HTMLonlineSchool.replace('%data%', course.school));
-                $('.education-entry:last-child').append(HTMLonlineDates.replace('%data%', course.dates));
+                $('.education-entry:last-child').append(HTMLonlineDates.replace('%data%', course.date));
                 $('.education-entry:last-child').append(HTMLonlineURL.replace('%data%', course.url));
             });
         }
@@ -154,21 +138,21 @@ var education = {
 };
 
 var projects = {
-    'projects': [{
-            'title': 'Kiva ioS App',
-            'dates': '2015',
+    projects: [{
+            title: 'Kiva ioS App',
+            dates: '2015',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores earum eius excepturi officiis optio repudiandae similique ullam. Atque ea perferendis perspiciatis repellendus ut. Architecto blanditiis commodi, cupiditate explicabo facilis fugiat fugit itaque, libero nemo nulla perspiciatis suscipit tenetur veritatis! Architecto consequatur laborum minima officiis porro ratione rerum sint sit temporibus!',
-            'images': ['images/boat-featured-200x150_small.jpg', 'images/flowers-featured-200x150_small.jpg']
+            images: ['images/boat-featured-200x150_small.jpg', 'images/flowers-featured-200x150_small.jpg']
         }, {
-            'title': 'Coreloop - Social Shopping',
-            'dates': '2014',
+            title: 'Coreloop - Social Shopping',
+            dates: '2014',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores cupiditate deserunt dignissimos ducimus eveniet libero magni minima, nemo optio placeat repellat repellendus reprehenderit, voluptate. Asperiores atque blanditiis cumque, esse explicabo itaque natus officiis perspiciatis placeat quo ratione saepe voluptatibus! Accusantium autem eaque earum nisi praesentium sint, soluta temporibus! Nisi, vero.',
-            'images': ['images/peacock-featured-200x150_small.jpg', 'images/boat-featured-200x150_small.jpg']
+            images: ['images/peacock-featured-200x150_small.jpg', 'images/boat-featured-200x150_small.jpg']
         }, {
-            'title': 'Vizualiser - Online Dashboards',
-            'dates': '2014',
+            title: 'Vizualiser - Online Dashboards',
+            dates: '2014',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequatur dignissimos dolore enim est fugiat fugit impedit ipsam nam, nemo nostrum obcaecati officiis perspiciatis quia sint temporibus ut vel voluptate? Asperiores autem consequatur et fugiat illo itaque nam porro quidem quis tenetur! Cupiditate fugit nam nemo saepe sit, unde voluptas.',
-            'images': ['images/flowers-featured-200x150_small.jpg', 'images/peacock-featured-200x150_small.jpg']
+            images: ['images/flowers-featured-200x150_small.jpg', 'images/peacock-featured-200x150_small.jpg']
         }
 
     ],

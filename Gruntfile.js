@@ -96,20 +96,6 @@ module.exports = function(grunt) {
         htmllint: {
             all: "*.html"
         },
-        // replace js/css files with minified versions in html
-        replace: {
-            html: {
-                src: '*.html',
-                overwrite: true,
-                replacements: [{
-                    from: "href=\"css/style.css\"",
-                    to: "href=\"dist/css/portfolio.min.css\""
-                }, {
-                    from: "src=\"js/portfolio.js\"",
-                    to: "src=\"dist/js/portfolio.min.js\""
-                }]
-            }
-        },
         //beautify js, css, html
         jsbeautifier: {
             src: ['*.js', 'js/*.js', '!js/*.min.js', '*.html', 'css/*.css', '!css/*.min.css']
@@ -123,9 +109,41 @@ module.exports = function(grunt) {
                     config.cssDir + '*.min.css'
                 ]
             }
+        },
+        copy: {
+            index_html: {
+                src: 'src/index.html',
+                dest: 'index.html'
+            },
+            images: {
+                expand: true,
+                flatten: true,
+                src: 'src/images/*',
+                dest: 'images/'
+            }
+        },
+        // replace js/css files with minified versions in html
+        replace: {
+            html: {
+                src: 'index.html',
+                overwrite: true,
+                replacements: [{
+                    from: '<link rel="stylesheet" href="css/vendor/bootstrap.min.css">\n    <link rel="stylesheet" href="css/vendor/zocial.min.css">',
+                    to: '<link rel="stylesheet" href="dist/css/includes.min.css">'
+                }, {
+                    from: '<link rel="stylesheet" href="css/style.css">',
+                    to: '<link rel="stylesheet" href="dist/css/resume.min.css">'
+                }, {
+                    from: '<script src="js/vendor/jquery-1.11.3.min.js"></script>\n    <script src="js/vendor/bootstrap.min.js"></script>',
+                    to: '<script src="dist/js/includes.min.js"></script>'
+                }, {
+                    from: '<script src="js/helper.js"></script>\n    <script src="js/resumeBuilder.js"></script>',
+                    to: '<script src="dist/js/resume.min.js"></script>'
+                }]
+            }
         }
     });
-    grunt.registerTask('default', ['htmllint', 'jshint', 'csslint', 'jsbeautifier', 'cssmin', 'uglify', 'concat']);
-    // order -> lint html, css, js, beautify, minify css/js and then concat
+    grunt.registerTask('default', ['htmllint', 'jshint', 'csslint', 'jsbeautifier', 'cssmin', 'uglify', 'concat', 'copy', 'replace']);
+    // order -> lint html, css, js, beautify, minify css/js and then concat, copy + replace
 
 };

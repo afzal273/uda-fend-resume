@@ -257,3 +257,7 @@ hr {
 .navbar-default .navbar-brand {
     color: #f5a623;
 }
+
+.wikipedia-links {
+    font-size: 0.75em;
+}

@@ -165,7 +165,7 @@ function initializeMap() {
 
         // do an ajax request and wiki links for the city to display in infowindow
         var contentString = '<div class="wikipedia-container">' +
-            '<h5 id="wikipedia-header">Relevant Wikipedia Links about ' + name + '</h5>' + '<ul id="wikipedia-links">';
+            '<h5>Relevant Wikipedia Links about ' + name + '</h5>' + '<ul class="wikipedia-links">';
 
         $.ajax({
             url: wikiUrl,
@@ -177,30 +177,45 @@ function initializeMap() {
                 for (var i = 0; i < articleList.length; i++) {
                     var articleStr = articleList[i];
                     var url = 'http://en.wikipedia.org/wiki/' + articleStr;
-                    contentString += '<li><a href="' + url + '">' + articleStr + '</a></li>';
+                    contentString += '<li><a class="wikipedia-links text-center" target="_blank" href="' + url + '">' + articleStr + '</a></li>';
                 }
                 contentString += '</ul></div>';
+
+                // infoWindows are the little helper windows that open when you click
+                // or hover over a pin on a map. They usually contain more information
+                // about a location.
+                var infoWindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                // hmmmm, I wonder what this is about...
+                google.maps.event.addListener(marker, 'click', function() {
+                    // your code goes here!
+                    infoWindow.open(map, marker);
+                });
+
             },
             error: function(resp) {
                 console.log("error: " + resp);
                 contentString = name;
+
+                // infoWindows are the little helper windows that open when you click
+                // or hover over a pin on a map. They usually contain more information
+                // about a location.
+                var infoWindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                // hmmmm, I wonder what this is about...
+                google.maps.event.addListener(marker, 'click', function() {
+                    // your code goes here!
+                    infoWindow.open(map, marker);
+                });
             }
 
         });
 
-        // infoWindows are the little helper windows that open when you click
-        // or hover over a pin on a map. They usually contain more information
-        // about a location.
-        var infoWindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-
-        // hmmmm, I wonder what this is about...
-        google.maps.event.addListener(marker, 'click', function() {
-            // your code goes here!
-            infoWindow.open(map, marker);
-        });
-
+        
         // this is where the pin actually gets added to the map.
         // bounds.extend() takes in a map location object
         bounds.extend(new google.maps.LatLng(lat, lon));
