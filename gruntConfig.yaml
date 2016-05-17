@@ -1,0 +1,13 @@
+jsSrcDir: js/
+jsDir: dist/js/
+cssSrcDir: css/
+cssDir: dist/css/
+vendorDir: vendor/
+vendorMinJs: includes.min.js
+vendorMinCss: includes.min.css
+appMinJs: resume.min.js
+appMinCss: resume.min.css
+appCss: portfolio.css
+appJs: portfolio.js
+minJs: "*.min.js"
+minCss: "*.min.css"

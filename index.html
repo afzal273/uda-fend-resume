@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Resume</title>
+    <link rel="stylesheet" href="dist/css/includes.min.css">
+    <link rel="stylesheet" href="dist/css/resume.min.css">
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body data-spy="scroll" data-target="#navbar" data-offset="50">
+    <div class="container-fluid">
+        <nav id="navbar" class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbarLinks">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#main">Afzal's Resume</a>
+                </div>
+                <div class="collapse navbar-collapse navbarLinks">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#workExperience">Experience</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#mapDiv">My Map</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="main" class="row">
+
+
+            <div id="header" class="center-content clearfix col-md-12">
+                <ul id="topContacts" class='flex-box'></ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div style='clear: both;'></div>
+            <div id="workExperience" class='gray col-md-12'>
+                <h2>Work Experience</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div id="projects" class="col-md-12">
+                <h2>Projects</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div id="education" class='gray col-md-12'>
+                <h2>Education</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div id="mapDiv" class="col-md-12">
+                <h2>Where I've Lived and Worked</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div id="letsConnect" class='dark-gray'>
+                <h2 class='orange center-text'>Let's Connect</h2>
+                <ul id="footerContacts" class="flex-box">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="dist/js/includes.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <script src="dist/js/resume.min.js"></script>
+
+    <script>
+        if (document.getElementsByClassName('flex-item').length === 0) {
+            document.getElementById('topContacts').style.display = 'none';
+        }
+        if (document.getElementsByTagName('h1').length === 0) {
+            document.getElementById('header').style.display = 'none';
+        }
+        if (document.getElementsByClassName('work-entry').length === 0) {
+            document.getElementById('workExperience').style.display = 'none';
+        }
+        if (document.getElementsByClassName('project-entry').length === 0) {
+            document.getElementById('projects').style.display = 'none';
+        }
+        if (document.getElementsByClassName('education-entry').length === 0) {
+            document.getElementById('education').style.display = 'none';
+        }
+        if (document.getElementsByClassName('flex-item').length === 0) {
+            document.getElementById('letsConnect').style.display = 'none';
+        }
+        if (document.getElementById('map') === null) {
+            document.getElementById('mapDiv').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>

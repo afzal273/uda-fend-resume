@@ -1,0 +1,23 @@
+{
+  "name": "afzal-resume-udacity-fend-project",
+  "version": "1.0.0",
+  "description": "Udacity Front End nanodegree resume project",
+  "main": "namechangestest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Afzal Syed",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-csslint": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-html": "^7.0.0",
+    "grunt-jsbeautifier": "^0.2.12",
+    "load-grunt-tasks": "^3.5.0"
+  }
+}
